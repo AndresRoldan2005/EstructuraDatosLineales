@@ -1,0 +1,43 @@
+package Materia.Pilas;
+
+import java.util.EmptyStackException;
+
+import Materia.Models.NodoGenerico;
+
+public class PilasGenericas<T> {
+    private NodoGenerico<T> top;
+
+    public PilasGenericas(){
+        top = null;
+    }
+
+    public void push (T dato){
+        NodoGenerico<T> nuevoNodo = new NodoGenerico<T>(dato);
+        nuevoNodo.next = top;
+        top = nuevoNodo;
+    }
+
+    public boolean isEmpty(){
+        return top == null;
+
+    }
+
+    public T pop(){
+        if(isEmpty()){
+            System.out.println("pila esta vacia como tu corazon bb");
+            throw new EmptyStackException();
+        }
+        T data = top.data;
+        top = top.next;
+        return data;
+    }
+    public T peek(){
+        if(isEmpty()){
+            System.out.println("pila esta vacia como tu corazon bb");
+            throw new EmptyStackException();
+        }
+        T data = top.data;
+        top = top.next;
+        return data;
+    }
+}
